@@ -1,5 +1,56 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
+doctype html
+html
+  head
+    //
+      META TAGS
+      these help describe the content on our page to the browser
+      they can help the browser to properly render our page
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Shopping List
+    //
+      STYLESHEETS
+      these help style our page.  We include normalize, then any frameworks we are using
+      then our custom styles
+    link(rel='stylesheet', href='stylesheets/normalize.css')
+    link(rel='stylesheet', href='fonts/font-awesome/css/font-awesome.min.css')
+    // <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    // <link href='http://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'>
+    link(rel='stylesheet', href='stylesheets/style.css')
+  body
+    .page-wrap
+      section.list-area
+        h1 My ToDo List
+        .user-input
+          form#formSubmit(action='')
+            input#todoInput.input-field(name='todoInput', type='text', placeholder='Add a new item here')
+            button#submit-button.submit-button
+              | Submit
+        .list-output
+          ul.list-output-ul
+            //
+              <li class="task task-undone">
+              <button class="task-mark-undone"  data-id="2"><i class="fa fa-square-o"></i></button>
+              <span class="task-info">Empty dishwasher</span>
+              <button class="task-mark-remove pull-right"><i class="fa fa-times"></i></button>
+              </li>
+      section.list-area
+        h1 My Done List
+        .list-output
+          ul#doneTask.doneTask
+            //
+              <li class="task task-done">
+              <button class="task-mark-done" data-id="3"><i class="fa fa-check-square-o"></i></button>
+              <span class="task-info">Buy tickets for the show</span>
+              <button class="task-mark-remove  pull-right"><i class="fa fa-times"></i></button>
+              </li>
+      section
+        form
+          input(type='text', name='file')
+          button#save_button(type='button')
+            | save
+          button#load_button(type='button')
+            | load
+    script(src='javascripts/function.js')
+    script(src='javascripts/todo.js')
